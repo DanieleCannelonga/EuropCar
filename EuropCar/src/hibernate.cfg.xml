@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+
+		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+
+		<!-- db Localhost -->
+		<property name="hibernate.connection.username">Cors1</property>
+		<property name="hibernate.connection.password">Gennaro892</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@teramo.digitalbusinessolution.com:1522:orcl</property>
+		
+
+		<!-- configuration pool via c3p0 -->
+		<property name="hibernate.c3p0.acquire_increment">1</property>
+		<property name="hibernate.c3p0.idle_test_period">100</property> <!-- seconds -->
+		<property name="hibernate.c3p0.max_size">10</property>
+		<property name="hibernate.c3p0.max_statements">10</property>
+		<property name="hibernate.c3p0.min_size">1</property>
+		<property name="hibernate.c3p0.timeout">3500</property> <!-- seconds -->
+
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		
+		<!-- ********************* AUTO CREATE DB TABLES ******************************** -->
+      	<property name="hibernate.hbm2ddl.auto">update</property> 
+ 	
+		<!-- MAPPING delle RISORSE  -->
+		<mapping class="main.java.model.session.AliquotaIva"/>
+		<mapping class="main.java.model.session.Area"/>
+		<mapping class="main.java.model.session.FatturaPassiva"/>
+		<mapping class="main.java.model.session.FatturaPassivaDettaglio"/>
+		<mapping class="main.java.model.session.Fornitore"/>
+		<mapping class="main.java.model.session.OrdineAcquisto"/>
+		<mapping class="main.java.model.session.OrdineAcquistoDettaglio"/>
+		<mapping class="main.java.model.session.Preventivo"/>
+		<mapping class="main.java.model.session.Progetto"/>
+		<mapping class="main.java.model.session.SottoCategoria"/>
+		<mapping class="main.java.model.session.SpesaInvestimento"/>
+		
+	</session-factory>
+</hibernate-configuration>

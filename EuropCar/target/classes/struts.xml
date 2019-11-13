@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="true" />
+	<constant name="struts.devMode" value="true" />
+	<package name="default" extends="struts-default">
+		<!-- <action name="Login"> <result>pages/login.jsp</result> </action> -->
+		
+		<!--  Action per il Menu Principale -->
+		<action name="Main" class="main.java.controller.Applicazione.MainAction">
+			<result name="input">Applicazione/PgsMain.jsp</result>
+			<result type="redirectAction" name="ArchivioRedirect" >ArchivioAction</result>
+			<result type="redirectAction" name="BudgetRedirect" >BudgetAction</result>
+			<result type="redirectAction" name="PreventivoRedirect" >PreventivoAction</result>
+			<result type="redirectAction" name="OrdineAcquistoRedirect" >OrdineAcquistoAction</result>
+			<result type="redirectAction" name="FatturaPassivaRedirect" >FatturaPassivaAction</result>
+			<result type="redirectAction" name="ImportaFatturaRedirect" >ImportaFatturaAction</result>
+		</action>
+		
+				<!--  Action per il Menu Archivio -->
+				<action name="ArchivioAction" class="main.java.controller.Applicazione.GestioneArchivio">
+					<result name="input">Applicazione/PgsArchivio.jsp</result>
+					<result type="redirectAction" name="AliquotaIvaRedirect" >AliquotaIvaAction</result>
+					<result type="redirectAction" name="AreaRedirect" >AreaAction</result>
+					<result type="redirectAction" name="FornitoreRedirect" >FornitoreAction</result>
+					<result type="redirectAction" name="ProgettoRedirect" >ProgettoAction</result>
+					<result type="redirectAction" name="SottoCategoriaRedirect" >SottoCategoriaAction</result>
+				</action>
+					
+						<!-- Archivio Aliquota Iva -->
+						<action name="AliquotaIvaAction" class="main.java.controller.Archivio.GestioneAliquotaIva">
+							<result name="search">Archivio/AliquotaIva/PgsArchivioAliquotaIva.jsp</result>
+							<result name="nuovoModifica">Archivio/AliquotaIva/PgsArchivioAliquotaIvaNuovoModifica.jsp</result>
+						</action>
+						
+						<!-- Archivio Area -->
+						<action name="AreaAction" class="main.java.controller.Archivio.GestioneArea">
+							<result name="search">Archivio/Area/PgsArchivioArea.jsp</result>
+							<result name="nuovoModifica">Archivio/Area/PgsArchivioAreaNuovoModifica.jsp</result>
+						</action>
+						
+						<!-- Archivio Fornitore -->
+						<action name="FornitoreAction" class="main.java.controller.Archivio.GestioneFornitore">
+							<result name="search">Archivio/Fornitore/PgsArchivioFornitore.jsp</result>
+							<result name="nuovoModifica">Archivio/Fornitore/PgsArchivioFornitoreNuovoModifica.jsp</result>
+						</action>
+						
+						<!-- Archivio Progetto -->
+						<action name="ProgettoAction" class="main.java.controller.Archivio.GestioneProgetto">
+							<result name="search">Archivio/Progetto/PgsArchivioProgetto.jsp</result>
+							<result name="nuovoModifica">Archivio/Progetto/PgsArchivioProgettoNuovoModifica.jsp</result>
+						</action>
+						
+						<!-- Archivio SottoCategoria -->
+						<action name="SottoCategoriaAction" class="main.java.controller.Archivio.GestioneSottoCategoria">
+							<result name="search">Archivio/SottoCategoria/PgsArchivioSottoCategoria.jsp</result>
+							<result name="nuovoModifica">Archivio/SottoCategoria/PgsArchivioSottoCategoriaNuovoModifica.jsp</result>
+						</action>
+					
+				<!--  Action per il Menu Ordine d'Acquisto -->
+				<action name="OrdineAcquistoAction" class="main.java.controller.Applicazione.GestioneOrdineAcquisto">
+					<result name="input">Applicazione/PgsOrdineAcquisto.jsp</result>
+					<result type="redirectAction" name="GestioneOrdineAcquistoRedirect" >GestioneOrdineAcquistoAction</result>
+					<result type="redirectAction" name="RicercaPerRedirect" >RicercaPerAction</result>
+				</action>
+					
+						<!-- Ordine Acquisto Gestione -->
+						<action name="GestioneOrdineAcquistoAction" class="main.java.controller.OrdineAcquisto.GestioneOrdineAcquisto">
+							<result name="search">OrdineAcquisto/Gestione/PgsGestioneOrdineAcquisto.jsp</result>
+							<result name="nuovoOrdineAcquisto">OrdineAcquisto/Gestione/PgsOrdineAcquistoNuovo.jsp</result>
+							<result name="modificaOrdineAcquisto">OrdineAcquisto/Gestione/PgsOrdineAcquistoModifica.jsp</result>
+							<result name="nuovoModificaDettaglio">OrdineAcquisto/Gestione/PgsOrdineAcquistoDettaglioNuovoModifica.jsp</result>
+						</action>
+						
+						<!-- Ordine Acquisto Ricerca Per -->
+						<action name="RicercaPerAction" class="main.java.controller.Applicazione.RicercaOrdineAcquisto">
+							<result name="input">Applicazione/PgsRicercaOrdineAcquisto.jsp</result>
+							<result type="redirectAction" name="RicercaFornitoreRedirect" >RicercaFornitoreAction</result>
+							<result type="redirectAction" name="RicercaProgettoRedirect" >RicercaProgettoAction</result>
+							<result type="redirectAction" name="RicercaSottoCategoriaRedirect" >RicercaSottoCategoriaAction</result>
+						</action>
+						
+								<!-- Ricerca per Fornitore -->
+								<action name="RicercaFornitoreAction" class="main.java.controller.OrdineAcquisto.RicercaPerFornitore">
+									<result name="search">OrdineAcquisto/Ricerca/PgsRicercaFornitore.jsp</result>
+									<result name="RicercaPerFornitore">OrdineAcquisto/Ricerca/PgsRicercaPerFornitore.jsp</result>
+								</action>
+								
+								<!-- Ricerca per Progetto -->
+								<action name="RicercaProgettoAction" class="main.java.controller.OrdineAcquisto.RicercaPerProgetto">
+									<result name="search">OrdineAcquisto/Ricerca/PgsRicercaProgetto.jsp</result>
+									<result name="RicercaPerProgetto">OrdineAcquisto/Ricerca/PgsRicercaPerProgetto.jsp</result>
+								</action>
+								
+								<!-- Ricerca per Fornitore -->
+								<action name="RicercaSottoCategoriaAction" class="main.java.controller.OrdineAcquisto.RicercaPerSottoCategoria">
+									<result name="search">OrdineAcquisto/Ricerca/PgsRicercaSottoCategoria.jsp</result>
+									<result name="RicercaPerSottoCategoria">OrdineAcquisto/Ricerca/PgsRicercaPerSottoCategoria.jsp</result>
+								</action>
+								
+				<!--  Action per il Menu Fattura Passiva -->
+				<action name="FatturaPassivaAction" class="main.java.controller.Applicazione.GestioneFatturaPassiva">
+					<result name="input">Applicazione/PgsFatturaPassiva.jsp</result>
+					<result type="redirectAction" name="GestioneFatturaPassivaRedirect" >GestioneFatturaPassivaAction</result>
+					<result type="redirectAction" name="RicercaRedirect" >RicercaAction</result>
+					<result type="redirectAction" name="StatisticaRedirect" >StatisticaAction</result>
+				</action>
+				
+						<!-- Gestione Fattura Passiva -->
+						<action name="GestioneFatturaPassivaAction" class="main.java.controller.FatturaPassiva.GestioneFatturaPassiva">
+							<result name="search">FatturaPassiva/Gestione/PgsFatturaPassiva.jsp</result>
+							<result name="nuovaFatturaPassiva">FatturaPassiva/Gestione/PgsFatturaPassivaNuovo.jsp</result>
+							<result name="modificaFatturaPassiva">FatturaPassiva/Gestione/PgsFatturaPassivaModifica.jsp</result>
+							<result name="nuovoModificaDettaglio">FatturaPassiva/Gestione/PgsFatturaPassivaDettaglioNuovoModifica.jsp</result>
+						</action>
+				
+						<!-- Ricerca Fattura Passiva -->
+						<action name="RicercaAction" class="main.java.controller.Applicazione.RicercaFatturaPassiva">
+							<result name="input">Applicazione/PgsRicercaFatturaPassiva.jsp</result>
+							<result type="redirectAction" name="RicercaFornitoreFatturaRedirect" >RicercaFornitoreFatturaAction</result>
+							<result type="redirectAction" name="RicercaPreventivoFatturaRedirect" >RicercaPreventivoFatturaAction</result>
+							<result type="redirectAction" name="RicercaSottoCategoriaFatturaRedirect" >RicercaSottoCategoriaFatturaAction</result>
+						</action>
+						
+								<!-- Ricerca per Fornitore -->
+								<action name="RicercaFornitoreFatturaAction" class="main.java.controller.FatturaPassiva.RicercaPerFornitore">
+									<result name="search">FatturaPassiva/Ricerca/PgsRicercaFornitore.jsp</result>
+									<result name="RicercaPerFornitore">FatturaPassiva/Ricerca/PgsRicercaPerFornitore.jsp</result>
+								</action>
+								
+								<!-- Ricerca per Preventivo -->
+								<action name="RicercaPreventivoFatturaAction" class="main.java.controller.FatturaPassiva.RicercaPerPreventivo">
+									<result name="search">FatturaPassiva/Ricerca/PgsRicercaPreventivo.jsp</result>
+									<result name="RicercaPerPreventivo">FatturaPassiva/Ricerca/PgsRicercaPerPreventivo.jsp</result>
+								</action>
+								
+								<!-- Ricerca per SottoCategoria -->
+								<action name="RicercaSottoCategoriaFatturaAction" class="main.java.controller.FatturaPassiva.RicercaPerSottoCategoria">
+									<result name="search">FatturaPassiva/Ricerca/PgsRicercaSottoCategoria.jsp</result>
+									<result name="RicercaPerSottoCategoria">FatturaPassiva/Ricerca/PgsRicercaPerSottoCategoria.jsp</result>
+								</action>
+								
+						<!-- Statistica Fattura Passiva -->
+						<action name="StatisticaAction" class="main.java.controller.FatturaPassiva.GestioneStatistica">
+							<result name="search">FatturaPassiva/Statistica/PgsRicercaStatistica.jsp</result>
+							<result name="RicercaStatistica">FatturaPassiva/Statistica/PgsStatistica.jsp</result>
+						</action>
+						
+				<!--  Action per il Menu Budget -->
+				<action name="BudgetAction" class="main.java.controller.Applicazione.GestioneBudget">
+					<result name="input">Applicazione/PgsBudget.jsp</result>
+					<result type="redirectAction" name="DefinizioneRedirect" >DefinizioneAction</result>
+					<result type="redirectAction" name="RiconciliazioneRedirect" >RiconciliazioneAction</result>
+					<result type="redirectAction" name="AvanzamentoRedirect" >AvanzamentoAction</result>
+					<result type="redirectAction" name="SpesaInvestimentoRedirect" >SpesaInvestimentoAction</result>
+				</action>
+				
+						<!-- Gestione Spesa d'Investimento -->
+						<action name="SpesaInvestimentoAction" class="main.java.controller.Budget.GestioneSpesaInvestimento">
+							<result name="search">Budget/SpesaInvestimento/PgsRicercaSpeseInvestimento.jsp</result>
+							<result name="RicercaSpeseInvestimento">Budget/SpesaInvestimento/PgsSpesaInvestimento.jsp</result>
+							<result name="nuovoModifica">Budget/SpesaInvestimento/PgsSpesaInvestimentoNuovoModifica.jsp</result>
+						</action>
+				
+						<!-- Gestione Avanzamento -->
+						<action name="AvanzamentoAction" class="main.java.controller.Budget.GestioneAvanzamento">
+							<result name="search">Budget/Avanzamento/PgsRicercaPerArea.jsp</result>
+							<result name="RicercaAvanzamento">Budget/Avanzamento/PgsAvanzamento.jsp</result>
+						</action>
+						
+						<!-- Gestione Riconciliazione -->
+						<action name="RiconciliazioneAction" class="main.java.controller.Budget.GestioneRiconciliazione">
+							<result name="search">Budget/Riconciliazione/PgsRicercaRiconciliazione.jsp</result>
+							<result name="RicercaRiconciliazione">Budget/Riconciliazione/PgsRiconciliazione.jsp</result>
+						</action>
+						
+						<!-- Gestione Definizione -->
+						<action name="DefinizioneAction" class="main.java.controller.Budget.GestioneDefinizione">
+							<result name="search">Budget/Definizione/PgsRicercaDefinizione.jsp</result>
+							<result name="RicercaDefinizione">Budget/Definizione/PgsDefinizione.jsp</result>
+							<result name="modificaDefinizione">Budget/Definizione/PgsModificaDefinizione.jsp</result>
+						</action>
+				
+				<!--  Action per il Menu Preventivo -->
+				<action name="PreventivoAction" class="main.java.controller.Applicazione.GestionePreventivo">
+					<result name="input">Applicazione/PgsPreventivo.jsp</result>
+					<result type="redirectAction" name="GestionePreventivoRedirect" >GestionePreventivoAction</result>
+				</action>
+				
+						<!-- Registrazione Spesa d'Investimento -->
+						<action name="GestionePreventivoAction" class="main.java.controller.Preventivo.GestionePreventivo">
+							<result name="search">Preventivo/PgsRicercaPreventivi.jsp</result>
+							<result name="RicercaPreventivi">Preventivo/PgsPreventivo.jsp</result>
+							<result name="nuovoModifica">Preventivo/PgsPreventivoNuovoModifica.jsp</result>
+						</action>
+						
+				<!--  Action per il Menu Importa Fattura -->
+				<action name="ImportaFatturaAction" class="main.java.controller.ImportaFattura.GestioneImportaFattura">
+					<result name="search">ImportaFattura/PgsImportaFattura.jsp</result>
+				</action>
+	</package>
+</struts>
